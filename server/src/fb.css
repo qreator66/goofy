@@ -103,6 +103,22 @@ div.uiContextualLayer.uiContextualLayerBelowRight {
 ._l3 .emoticon {
     text-indent: -999em;
 }
+
+.goofy-online {
+    position: relative;
+}
+.goofy-online:after {
+    position: absolute;
+    background-color: #299B30;
+    border-radius: 999em;
+    display: block;
+    content: "";
+    width: 6px;
+    height: 6px;
+    right: -10px;
+    top: 5px;
+}
+
 @media (max-width: 649px) {
     #wmMasterViewThreadlist ._l4, ._3b, ul.uiList._281._4ki, div._l7.rfloat._ohf, div._1rw {
         display: none;

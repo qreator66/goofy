@@ -6,8 +6,8 @@ for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElemen
 mixpanel.init("2245181dbc803998dedc5b07d840e672");
 
 var emoticonMapping = {
-	"emoticon_smile"			:"😃",
-	"emoticon_frown"			:"😦",
+	"emoticon_smile"		:"😃",
+	"emoticon_frown"		:"😦",
 	"emoticon_poop"			:"💩",
 	"emoticon_putnam"		:":putnam:",
 	"emoticon_tongue"		:"😛",
@@ -19,20 +19,20 @@ var emoticonMapping = {
 	"emoticon_grumpy"		:">:(",
 	"emoticon_unsure"		:":/",
 	"emoticon_cry"			:"😢",
-	"emoticon_devil"			:"😈",
-	"emoticon_angel"			:"😇",
+	"emoticon_devil"		:"😈",
+	"emoticon_angel"		:"😇",
 	"emoticon_kiss"			:"😘",
-	"emoticon_heart"			:"❤️",
+	"emoticon_heart"		:"❤️",
 	"emoticon_kiki"			:"😊",
 	"emoticon_squint"		:"😑",
 	"emoticon_confused"		:"😕",
 	"emoticon_confused_rev"	:"😕",
-	"emoticon_upset"			:">:o",
+	"emoticon_upset"		:">:o",
 	"emoticon_pacman"		:":v",
-	"emoticon_robot"			:":|]",
+	"emoticon_robot"		:":|]",
 	"emoticon_colonthree"	:":3",
 	"emoticon_penguin"		:"🐧",
-	"emoticon_shark"			:"(^^^)",
+	"emoticon_shark"		:"(^^^)",
 	"emoticon_like"			:"👍"
 };
 
@@ -56,6 +56,10 @@ function init() {
 		window.dispatchEvent(new Event('resize'));
 		dockCount();
 	}, 200);
+
+	setInterval(function() {
+		setOnlineState();
+	}, 1000);
 
 	setTimeout(function() {
 		mixpanel.track("loaded");
@@ -87,7 +91,25 @@ function init() {
 			return false;
 		}
 	};
+}
 
+function setOnlineState() {
+	var online = document.querySelectorAll('.goofy-online');
+	for (var i =0; i < online.length; i++) {
+	    online[i].className = '_l1';
+	}
+
+	var online = document.querySelectorAll('.sx_b11809');
+	for (var i =0; i < online.length; i++) {
+	    var el = online[i];
+	    while (el.tagName !== 'LI') {
+	        el = el.parentElement;
+	    }
+	    var chat = document.getElementById('recent:user:'+el.getAttribute('data-id'));
+	    if (chat) {
+	        chat.querySelector('._l1').className = chat.querySelector('._l1').className +' goofy-online';
+	    }
+	}
 }
 
 function reactivation(userid) {
